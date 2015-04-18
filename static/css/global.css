@@ -7,11 +7,15 @@
 }
 
 .metric-column {
-    margin-top: 8px;
+    margin-top: 12px;
 }
 
-.help-hover:hover {
-    cursor:pointer;
+.has-tip {
+    font-weight: inherit;
+}
+
+.has-tip:hover {
+    color: inherit;
 }
 
 .metric-label {
