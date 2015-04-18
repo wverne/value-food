@@ -7,7 +7,7 @@
 }
 
 .metric-column {
-    margin-top: 5px;
+    margin-top: 8px;
 }
 
 .help-hover:hover {
@@ -24,4 +24,12 @@
 
 .metric-help {
     color: #606060
+}
+
+.range-slider-handle {
+    background: #0085a5;
+}
+
+.range-slider-handle:hover {
+    background: #007190;
 }
