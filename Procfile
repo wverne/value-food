@@ -1,0 +1,1 @@
+web: gunicorn valuefood.wsgi --log-file -
