@@ -39,7 +39,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'valuefood',
-    'values'
+    'values',
+    'sites'
 )
 
 MIDDLEWARE_CLASSES = (
