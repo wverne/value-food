@@ -44,7 +44,7 @@ class Site(models.Model):
 class Score(models.Model):
     site = models.ForeignKey(Site)
     metric = models.ForeignKey(Metric)
-    score = models.IntegerField()
+    score = models.FloatField()
 
     def __str__(self):
         return "%s %s" % (self.site.name, self.metric.name)
