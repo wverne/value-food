@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <title>ValueFood</title>
+</head>
+
+<body>
+
+    <h1>Value-Driven Food Choices</h1>
+
+    <p>
+        Insert intro paragraph here.
+    </p>
+
+    {% for value in values %}
+
+        <h3>{{ value.name }}</h3>
+
+        <p>{{ value.blurb }}</p>
+
+        {% for metric in value.metrics %}
+
+            <h4>{{ metric.name }}</h4>
+
+            <p>{{ metric.help_text }}</p>
+
+        {% endfor %}
+
+    {% endfor %}
+
+</body>
+
+</html>

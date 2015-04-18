@@ -6,8 +6,15 @@ class Value(models.Model):
     blurb = models.TextField()
     number = models.IntegerField(default=0)
 
+    @property
+    def metrics(self):
+        return Metric.objects.filter(value=self)
+
     def __str__(self):
         return self.name
+
+    class Meta:
+        ordering = ["number"]
 
 
 class Metric(models.Model):
@@ -18,3 +25,6 @@ class Metric(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        ordering = ["value", "number"]
