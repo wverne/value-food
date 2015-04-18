@@ -1,0 +1,27 @@
+.value-label {
+    color: #007190;
+}
+
+.value-name {
+    font-weight: bold;
+}
+
+.metric-column {
+    margin-top: 5px;
+}
+
+.help-hover:hover {
+    cursor:pointer;
+}
+
+.metric-label {
+    color: #903500;
+}
+
+.metric-name {
+    font-weight: bold;
+}
+
+.metric-help {
+    color: #606060
+}

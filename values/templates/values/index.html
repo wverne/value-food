@@ -1,32 +1,137 @@
-<html>
+{% load staticfiles %}
+
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en"
+      data-useragent="Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)">
 
 <head>
-    <title>ValueFood</title>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>Put Your Money Where Your Mouth Is</title>
+
+    <!-- stylesheets -->
+    <link rel="stylesheet"
+          href="http://foundation.zurb.com//assets/css/templates/foundation.css"/>
+    <link rel="stylesheet" href="{% static "css/global.css" %}" />
+
 </head>
 
 <body>
 
-    <h1>Value-Driven Food Choices</h1>
+<div class="row">
+    <div class="large-12 columns">
+        <h1>
+            Put Your Money Where Your Mouth Is
+            <br />
+            <small>value driven food choices</small>
+        </h1>
+        <hr />
+    </div>
+</div>
 
-    <p>
-        Insert intro paragraph here.
-    </p>
 
-    {% for value in values %}
+<div class="row">
+    <article>
+        <p>
+            Eat local, buy organic, support fair labor practices,
+            protect natural resources!
+            Do you want your food choices to support your values?
+            Use this interactive site to help you make those decisions.
+        </p>
+    </article>
 
-        <h3>{{ value.name }}</h3>
+    <hr />
 
-        <p>{{ value.blurb }}</p>
+    <div class="large-8 columns" role="content">
+        {% for value in values %}
+            <article>
+                <h3>
+                    <span class="value-label">Value</span>
+                    <span class="value-name">{{ value.name }}</span>
+                </h3>
 
-        {% for metric in value.metrics %}
+                <h6>
+                    <p>{{ value.blurb }}</p>
+                </h6>
 
-            <h4>{{ metric.name }}</h4>
+                {% for metric in value.metrics %}
 
-            <p>{{ metric.help_text }}</p>
+                    <div class="row">
+                        <div class="large-4 columns metric-column">
+                            <h5 {% if metric.help_text %}class="help-hover"{% endif %}>
+                                <span class="metric-label">Metric</span>
+                                <span class="metric-name">{{ metric.name }}</span>
+                                {% if metric.help_text %}
+                                    <span class="metric-help">(?)</span>
+                                {% endif %}
+                            </h5>
+                        </div>
 
+                        <div class="large-8 columns test">
+                            <div class="range-slider" data-slider>
+                              <span class="range-slider-handle" role="slider" tabindex="0"></span>
+                              <span class="range-slider-active-segment"></span>
+                              <input type="hidden">
+                            </div>
+                        </div>
+                    </div>
+
+                {% endfor %}
+
+            </article>
+            <hr/>
         {% endfor %}
 
-    {% endfor %}
+    </div>
+
+
+    <aside class="large-4 columns">
+        <div class="panel">
+            <h5>
+                <b>Your Values</b>
+            </h5>
+            {% for value in values %}
+                <p style="margin-bottom: 0">{{ value.name }}</p>
+            {% endfor %}
+        </div>
+
+        <div class="panel">
+            <h5>
+                <b>Our Recommendations</b>
+            </h5>
+            <p style="margin-bottom: 0">Beef</p>
+            <p style="margin-bottom: 0">All Beef</p>
+            <p style="margin-bottom: 0">Nothin' but the Beef</p>
+        </div>
+    </aside>
+
+</div>
+
+
+<footer class="row">
+    <div class="large-12 columns">
+        <hr/>
+        <div class="row">
+            <div class="large-6 columns">
+                <p>&copy; Copyright no one at all. Go to town.</p>
+            </div>
+            <div class="large-6 columns">
+                <ul class="inline-list right">
+                    <li><a href="#">Link 1</a></li>
+                    <li><a href="#">Link 2</a></li>
+                    <li><a href="#">Link 3</a></li>
+                    <li><a href="#">Link 4</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- javascript -->
+<script src="http://foundation.zurb.com/assets/js/jquery.js"></script>
 
 </body>
 
