@@ -61,3 +61,6 @@ foodEnv/
 
 # Emacs temp files
 *~
+
+# PyCharm files
+.idea
