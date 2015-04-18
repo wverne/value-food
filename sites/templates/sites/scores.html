@@ -1,0 +1,52 @@
+{% load site_extras %}
+
+<html>
+
+<head>
+    <title>ValueFood - Scores</title>
+
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding:4px;
+        }
+
+        th, td {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Site Scores</h1>
+
+    {% for food in foods %}
+        <h2>{{ food.name }}</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Site Name</th>
+                    {% for metric in metrics %}
+                        <th>{{ metric.name }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for site in food.sites %}
+                    <tr>
+                        <th>{{ site.name }}</th>
+                        {% with scores=site.scores %}
+                            {% for metric in metrics %}
+                                <td>{{ scores|get_item:metric.name }}</td>
+                            {% endfor %}
+                        {% endwith %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endfor %}
+</body>
+
+</html>
