@@ -4,7 +4,6 @@ from values.models import Value
 
 
 def index(request):
-
-    return render(request, 'polls/index.html', {
+    return render(request, 'sites/index.html', {
         'values': Value.objects.all()
     })
