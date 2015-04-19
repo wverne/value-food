@@ -43,8 +43,10 @@ function updateYourValues(metricWeights) {
                     averageWeights[value] += metricWeights[value][metric];
                 }
             }
-            averageWeights[value] /= numMetrics;
-            totalAverageWeights += averageWeights[value];
+            if (numMetrics > 0) {
+                averageWeights[value] /= numMetrics;
+                totalAverageWeights += averageWeights[value];
+            }
         }
     }
 
