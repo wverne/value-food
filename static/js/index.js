@@ -90,6 +90,7 @@ function updateResults(metricWeights, foods, siteNames) {
 
             var thisWeight = avgRaw[value] / totalAvgRaw;
             thisWeight *= 100;
+            thisWeight *= 1.5;  // Makes bar wider
             thisWeight = Math.round(thisWeight);
 
             $(".your-values-progress[value-id=" + value +
