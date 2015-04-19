@@ -58,3 +58,7 @@ h4.sidebar-header {
 .rec-label {
     color: #903500;
 }
+
+#rec-food-list > dd {
+    margin-bottom: 0.5rem;
+}
