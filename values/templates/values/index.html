@@ -26,7 +26,7 @@
         <h1>
             Put Your Money Where Your Mouth Is
             <br />
-            <small>value driven food choices</small>
+            <small>value-driven food choices</small>
         </h1>
         <hr />
     </div>
@@ -122,6 +122,27 @@
                 <dl id="rec-food-list">
                     {% for food in foods %}
                         <dt>{{ food.name }}</dt>
+
+                        <dd class="rec-item"
+                            food-id={{ food.id }}
+                            rec-place=1>
+                            <span class="rec-label">#1</span>
+                            <span class="rec-site"></span>
+                        </dd>
+
+                        <dd class="rec-item"
+                            food-id={{ food.id }}
+                            rec-place=2>
+                            <span class="rec-label">#2</span>
+                            <span class="rec-site"></span>
+                        </dd>
+
+                        <dd class="rec-item"
+                            food-id={{ food.id }}
+                            rec-place=3>
+                            <span class="rec-label">#3</span>
+                            <span class="rec-site"></span>
+                        </dd>
                     {% endfor %}
                 </dl>
             </div>
@@ -129,26 +150,6 @@
     </aside>
 
 </div>
-
-
-<footer class="row">
-    <div class="large-12 columns">
-        <hr/>
-        <div class="row">
-            <div class="large-6 columns">
-                <p>&copy; Copyright no one at all. Go to town.</p>
-            </div>
-            <div class="large-6 columns">
-                <ul class="inline-list right">
-                    <li><a href="#">Link 1</a></li>
-                    <li><a href="#">Link 2</a></li>
-                    <li><a href="#">Link 3</a></li>
-                    <li><a href="#">Link 4</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</footer>
 
 <!-- javascript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>

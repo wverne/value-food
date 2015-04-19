@@ -13,7 +13,7 @@ function initInteraction(metrics) {
         var metricId = $(this).attr('metric-id');
         var weight = parseInt($(this).attr('data-slider'));
         metricWeights[valueId][metricId] = weight;
-        updateYourValues(metricWeights);
+        updateResults(metricWeights);
     });
 }
 
@@ -30,33 +30,43 @@ function initMetricWeights(metrics) {
     return metricWeights;
 }
 
-function updateYourValues(metricWeights) {
-    var averageWeights = {};
-    var totalAverageWeights = 0;
+function updateResults(metricWeights) {
+    var avgRaw = {};
+    var totalAvgRaw = 0;
 
+    // Calculate value-level scores
     for (var value in metricWeights) {
         if (metricWeights.hasOwnProperty(value)) {
-            averageWeights[value] = 0;
+
+            avgRaw[value] = 0;
+
             var numMetrics = Object.keys(metricWeights[value]).length;
+
             for (var metric in metricWeights[value]) {
                 if (metricWeights[value].hasOwnProperty(metric)) {
-                    averageWeights[value] += metricWeights[value][metric];
+                    avgRaw[value] += metricWeights[value][metric];
                 }
             }
+
             if (numMetrics > 0) {
-                averageWeights[value] /= numMetrics;
-                totalAverageWeights += averageWeights[value];
+                avgRaw[value] /= numMetrics;
+                totalAvgRaw += avgRaw[value];
             }
+
         }
     }
 
-    for (value in averageWeights) {
-        if (averageWeights.hasOwnProperty(value)) {
-            var thisWeight = averageWeights[value] / totalAverageWeights;
+    // Update sidebar
+    for (value in avgRaw) {
+        if (avgRaw.hasOwnProperty(value)) {
+
+            var thisWeight = avgRaw[value] / totalAvgRaw;
             thisWeight *= 100;
             thisWeight = Math.round(thisWeight);
+
             $(".your-values-progress[value-id=" + value +
                 "] > span.meter").width(thisWeight + "%");
+
         }
     }
 }
