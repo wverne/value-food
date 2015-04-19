@@ -64,10 +64,12 @@ function updateResults(metricWeights, foods, siteNames) {
                         if (foods.hasOwnProperty(food)) {
                             for (var site in foods[food]) {
                                 if (foods[food].hasOwnProperty(site)) {
-                                    totalSites[food][site] +=
-                                        metricWeights[value][metric] *
-                                        foods[food][site][metric] /
-                                        numMetrics;
+                                    if (foods[food][site][metric] > -1.0) {
+                                        totalSites[food][site] +=
+                                            metricWeights[value][metric] *
+                                            foods[food][site][metric] /
+                                            numMetrics;
+                                    }
                                 }
                             }
                         }
