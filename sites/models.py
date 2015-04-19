@@ -34,8 +34,18 @@ class Site(models.Model):
                 scores_dict[metric.name] = -1
         return scores_dict
 
+    @property
+    def scores_id(self):
+        scores_dict = {}
+        for score in Score.objects.filter(site=self):
+            scores_dict[score.metric.id] = score.score
+        for metric in Metric.objects.all():
+            if not metric.id in scores_dict:
+                scores_dict[metric.id] = -1
+        return scores_dict
+
     def __str__(self):
-        return self.name
+        return self.name + " - " + self.food.name
 
     class Meta:
         ordering = ["food", "name"]
