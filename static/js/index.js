@@ -129,7 +129,7 @@ function updateResults(metricWeights, foods, siteNames) {
                 var recSite = siteRanks[food][i];
                 if (recSite !== undefined) {
                     $(".rec-item[food-id=" + food + "][rec-place=" + (i + 1) + "] > .rec-site").text(
-                        siteNames[recSite["id"]]
+                        siteNames[recSite["id"]] + " (" + recSite["score"].toFixed(1) + ")"
                     );
                 }
             }
