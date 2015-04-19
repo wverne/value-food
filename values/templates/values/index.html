@@ -91,23 +91,25 @@
     </div>
 
 
-    <aside class="large-4 columns">
-        <div class="panel">
-            <h5>
-                <b>Your Values</b>
-            </h5>
-            {% for value in values %}
-                <p style="margin-bottom: 0">{{ value.name }}</p>
-            {% endfor %}
-        </div>
+    <aside id="fixed-sidebar" class="large-4 columns float-right">
+        <div id="sidebar-sticky-wrapper">
+            <div class="panel">
+                <h5>
+                    <b>Your Values</b>
+                </h5>
+                {% for value in values %}
+                    <p style="margin-bottom: 0">{{ value.name }}</p>
+                {% endfor %}
+            </div>
 
-        <div class="panel">
-            <h5>
-                <b>Our Recommendations</b>
-            </h5>
-            <p style="margin-bottom: 0">Beef</p>
-            <p style="margin-bottom: 0">All Beef</p>
-            <p style="margin-bottom: 0">Nothin' but the Beef</p>
+            <div class="panel">
+                <h5>
+                    <b>Our Recommendations</b>
+                </h5>
+                <p style="margin-bottom: 0">Beef</p>
+                <p style="margin-bottom: 0">All Beef</p>
+                <p style="margin-bottom: 0">Nothin' but the Beef</p>
+            </div>
         </div>
     </aside>
 
@@ -139,9 +141,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.1/js/foundation/foundation.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.1/js/foundation/foundation.slider.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.1/js/foundation/foundation.tooltip.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.1/js/foundation/foundation.magellan.js"></script>
+<script src="{% static "js/jquery.sticky.js" %}"></script>
 
 <script>
     $(document).foundation();
+
+    $(document).ready(function () {
+        $("#sidebar-sticky-wrapper").sticky({ topSpacing: 20 });
+    });
 </script>
 
 </body>
