@@ -34,16 +34,21 @@
 
 
 <div class="row">
-    <article>
-        <p>
-            Eat local, buy organic, support fair labor practices,
-            protect natural resources!
-            Do you want your food choices to support your values?
-            Use this interactive site to help you make those decisions.
-        </p>
-    </article>
+    <div class="large-12 columns">
+        <article>
+            <p>
+                Eat local, buy organic, support fair labor practices,
+                protect natural resources!
+                Do you want your food choices to support your values?
+                Use this interactive site to help you make those decisions.
+            </p>
+        </article>
+        <hr />
+    </div>
+</div>
 
-    <hr />
+
+<div class="row">
 
     <div class="large-8 columns" role="content">
         {% for value in values %}
@@ -96,7 +101,7 @@
     <aside id="fixed-sidebar" class="large-4 columns float-right">
         <div id="sidebar-sticky-wrapper">
             <div class="panel">
-                <h4>Your Values</h4>
+                <h4 class="sidebar-header">Your Values</h4>
                 {% for value in values %}
                     <div class="row">
                         <div class="large-4 columns">
@@ -113,7 +118,7 @@
             </div>
 
             <div class="panel">
-                <h4>Our Recommendations</h4>
+                <h4 class="sidebar-header">Our Recommendations</h4>
                 <dl id="rec-food-list">
                     {% for food in foods %}
                         <dt>{{ food.name }}</dt>

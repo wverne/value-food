@@ -42,6 +42,10 @@ body {
     background: #007190;
 }
 
+h4.sidebar-header {
+    margin-bottom: 15px;
+}
+
 .your-values-progress {
     background: none;
     border: none;
