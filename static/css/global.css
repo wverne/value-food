@@ -41,3 +41,12 @@ body {
 .range-slider-handle:hover {
     background: #007190;
 }
+
+.your-values-progress {
+    background: none;
+    border: none;
+}
+
+.your-values-progress > span.meter {
+    background: #0085a5;
+}

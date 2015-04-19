@@ -72,8 +72,10 @@
                         </div>
 
                         <div class="large-8 columns test">
-                            <div class="range-slider" data-slider
-                                 data-options="step: 1; start: 1; end: 100;">
+                            <div class="range-slider metric-slider" data-slider
+                                 data-options="step: 1; start: 1; end: 100;"
+                                 value-id={{ value.id }}
+                                 metric-id={{ metric.id }}>
                               <span class="range-slider-handle"
                                     role="slider" tabindex="0"></span>
                               <span class="range-slider-active-segment"></span>
@@ -98,7 +100,17 @@
                     <b>Your Values</b>
                 </h5>
                 {% for value in values %}
-                    <p style="margin-bottom: 0">{{ value.name }}</p>
+                    <div class="row">
+                        <div class="large-4 columns">
+                            {{ value.name }}
+                        </div>
+                        <div class="large-8 columns">
+                            <div class="progress your-values-progress"
+                                 value-id={{ value.id }}>
+                                <span class="meter"></span>
+                            </div>
+                        </div>
+                    </div>
                 {% endfor %}
             </div>
 
@@ -144,12 +156,25 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.1/js/foundation/foundation.magellan.js"></script>
 <script src="{% static "js/jquery.sticky.js" %}"></script>
 
-<script>
-    $(document).foundation();
+<script src="{% static "js/index.js" %}"></script>
 
-    $(document).ready(function () {
-        $("#sidebar-sticky-wrapper").sticky({ topSpacing: 20 });
+<script>
+
+$(document).foundation();
+
+$(document).ready(function () {
+    setStickySidebar();
+    initInteraction({
+        {% for value in values %}
+            {{ value.id }}: [
+                {% for metric in value.metrics %}
+                    {{ metric.id }},
+                {% endfor %}
+            ],
+        {% endfor %}
     });
+});
+
 </script>
 
 </body>
