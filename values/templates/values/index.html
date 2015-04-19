@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load site_extras %}
 
 <!doctype html>
 <!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
@@ -175,6 +176,26 @@ $(document).ready(function () {
                     {{ metric.id }},
                 {% endfor %}
             ],
+        {% endfor %}
+    }, {
+        {% for food in foods %}
+            {{ food.id }}: {
+                {% for site in food.sites %}
+                    {{ site.id }}: {
+                        {% with scores=site.scores_id %}
+                            {% for score in scores %}
+                                {{ score }}: {{ scores|get_item:score }},
+                            {% endfor %}
+                        {% endwith %}
+                    },
+                {% endfor %}
+            },
+        {% endfor %}
+    }, {
+        {% for food in foods %}
+            {% for site in food.sites %}
+                {{ site.id }}: "{{ site.name }}",
+            {% endfor %}
         {% endfor %}
     });
 });
